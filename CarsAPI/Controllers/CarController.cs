@@ -57,5 +57,15 @@ namespace CarsAPI.Controllers
                 return Ok();
             }
         }
+        [HttpDelete("{id}")]
+        public ActionResult Delete (Guid id)
+        {
+        using (var context = new CarContext())
+        var existingCar = context.Cars. FirstOrDefault(x => x.Id == id);
+        context.Cars.Remove(existingCar);
+        }
+        context.SaveChanges();
+        return Ok();
+        }
     }
 }
